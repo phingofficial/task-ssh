@@ -1,4 +1,5 @@
 <?php
+
 /**
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -17,7 +18,7 @@
  * <http://phing.info>.
  */
 
-namespace Phing\Task\Ext;
+namespace Phing\Task\Ext\Ssh;
 
 use Phing\Exception\BuildException;
 use Phing\Project;
@@ -386,9 +387,7 @@ class SshTask extends Task
         }
 
         fclose($stream);
-        if (isset($stderr_stream)) {
-            fclose($stderr_stream);
-        }
+        fclose($stderr_stream);
 
         if ($this->failonerror && !empty($result_error)) {
             throw new BuildException("SSH Task failed: " . $result_error);
